@@ -1,8 +1,6 @@
 -buildpath: org.apache.felix.ipojo,\
 	osgi.core,\
-	org.apache.felix.ipojo.handler.whiteboard
-Private-Package: shootout.ipojo.impl,\
-	shootout.ipojo.impl.sensor,\
-	shootout.ipojo.impl.dashboard
-Export-Package: shootout.ipojo
--plugin:org.apache.felix.ipojo.bnd.PojoizationPlugin;path:="build/org.apache.felix.ipojo-1.11.2.jar,build/bnd-ipojo-plugin-1.11.2.jar,build/org.apache.felix.ipojo.manipulator-1.11.2.jar"
+	org.apache.felix.ipojo.handler.whiteboard,\
+	org.apache.felix.ipojo.api
+
+-sub: *.bnd

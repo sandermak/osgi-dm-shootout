@@ -1,0 +1,25 @@
+-runfw: org.apache.felix.framework;version='[4,5)'
+-runee: JavaSE-1.6
+-runsystemcapabilities: ${native_capability}
+
+-resolve.effective: active
+
+-runbundles: org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
+	org.apache.felix.gogo.command;version='[0.12.0,0.12.1)',\
+	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
+	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
+	org.apache.felix.ipojo;version='[1.11.2,1.11.3)',\
+	org.apache.felix.ipojo.api;version='[1.11.2,1.11.3)',\
+	org.apache.felix.ipojo.composite;version='[1.11.2,1.11.3)',\
+	org.apache.felix.ipojo.gogo;version='[1.11.2,1.11.3)',\
+	org.apache.felix.log;version='[1.0.1,1.0.2)',\
+	shootout.ipojo.activator;version=latest
+
+-runrequires: osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo.gogo)',\
+	osgi.identity;filter:='(osgi.identity=shootout.ipojo.activator)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo.api)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo.composite)'
+

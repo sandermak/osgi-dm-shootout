@@ -11,11 +11,11 @@
 	org.apache.felix.ipojo;version='[1.11.2,1.11.3)',\
 	org.apache.felix.ipojo.gogo;version='[1.11.2,1.11.3)',\
 	org.apache.felix.log;version='[1.0.1,1.0.2)',\
-	shootout.ipojo;version=latest
+	shootout.ipojo.annotations;version=latest
 
 -runrequires: osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=shootout.ipojo)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo)',\
-	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo.gogo)'
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo.gogo)',\
+	osgi.identity;filter:='(osgi.identity=shootout.ipojo.annotations)'
 

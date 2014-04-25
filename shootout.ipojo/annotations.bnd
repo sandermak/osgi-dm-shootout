@@ -1,0 +1,5 @@
+-plugin: org.apache.felix.ipojo.bnd.PojoizationPlugin;path:='build/org.apache.felix.ipojo-1.11.2.jar,build/bnd-ipojo-plugin-1.11.2.jar,build/org.apache.felix.ipojo.manipulator-1.11.2.jar'
+Private-Package: shootout.ipojo.impl,\
+	shootout.ipojo.impl.sensor,\
+	shootout.ipojo.impl.dashboard
+Export-Package: shootout.ipojo

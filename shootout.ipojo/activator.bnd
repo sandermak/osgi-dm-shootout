@@ -1,0 +1,6 @@
+Private-Package: shootout.ipojo.impl,\
+	shootout.ipojo.impl.sensor,\
+	shootout.ipojo.impl.dashboard,\
+	shootout.ipojo.activator
+Export-Package: shootout.ipojo
+Bundle-Activator: shootout.ipojo.activator.Activator

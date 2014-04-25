@@ -19,6 +19,7 @@ import shootout.ipojo.Sensor;
 public class MultiSensorDashboard implements Dashboard {
 
 	// TODO: What exactly does the proxy property do?
+	// whiteboard pattern can also be implemented using the whiteboard addon, http://mail-archives.apache.org/mod_mbox/felix-users/201310.mbox/%3CAE4580C2-9C94-4D97-910D-C517F4EC6167@gmail.com%3E
 	@Bind(aggregate=true) // white board pattern / service discovery
 	void bindSensor(Sensor sensor, ServiceReference ref) {
 		System.out.println("[MultiSensorDashboard] bind " + sensor.getType() + " " + sensor + " " + ref);
