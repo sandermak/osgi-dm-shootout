@@ -1,0 +1,10 @@
+-runbundles: org.apache.felix.scr,\
+	org.apache.felix.gogo.runtime,\
+	org.apache.felix.gogo.shell,\
+	osgi.cmpn,\
+	osgi.core,\
+	org.apache.felix.gogo.command,\
+	dashboard;version=latest,\
+	sensors.api;version=latest,\
+	sensors.temp;version=latest
+-runfw: org.apache.felix.framework;version='[4.2.1,4.2.1]'

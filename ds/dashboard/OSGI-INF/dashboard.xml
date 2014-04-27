@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.osgi.org/xmlns/scr/v1.1.0" name="shootout.dashboard"
+	immediate="true">
+	<implementation class="shootout.dashboard.DashboardImpl" />
+	<property name="service.description" value="Sample dashboard" />
+	<service>
+		<provide interface="shootout.dashboard.api.Dashboard" />
+	</service>
+	<reference name="sensor" interface="shootout.sensor.api.Sensor"
+		cardinality="1..1" bind="setSensor" unbind="unsetSensor" />
+</component>
