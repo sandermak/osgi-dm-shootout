@@ -2,6 +2,9 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 	<service id="dashboardService" interface="shootout.dashboard.api.Dashboard"
 		ref="dashboard" />
-	<bean id="dashboard" class="shootout.dashboard.DashboardImpl" activation="eager">
+	<bean id="dashboard" init-method="myActivate" destroy-method="myDeactivate" class="shootout.dashboard.DashboardImpl">
+		<property name="sensor">
+			<reference interface="shootout.sensor.api.Sensor"></reference>
+		</property>
 	</bean>
 </blueprint>
