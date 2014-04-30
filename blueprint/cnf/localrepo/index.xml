@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1398881625777' name='Local' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1398886101700' name='Local' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='org.springframework.core'/>
@@ -1427,6 +1427,84 @@
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=org.xml.sax)(version&gt;=0.0.0))'/>
       <directive name='resolution' value='optional'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='org.springframework.expression'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='3.2.5.RELEASE'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='be6717fd1e0e4c9e035a81c5f7d63245d72b585ffbd3c2e73dbaeb6e2e8e3985'/>
+      <attribute name='url' value='org.springframework.expression/org.springframework.expression-3.2.5.jar'/>
+      <attribute name='size' type='Long' value='199369'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.springframework.expression'/>
+      <attribute name='version' type='Version' value='3.2.5.RELEASE'/>
+      <attribute name='bundle-symbolic-name' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+      <directive name='uses' value='org.springframework.core.convert'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.springframework.expression.common'/>
+      <attribute name='version' type='Version' value='3.2.5.RELEASE'/>
+      <attribute name='bundle-symbolic-name' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+      <directive name='uses' value='org.springframework.core.convert,org.springframework.expression'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.springframework.expression.spel'/>
+      <attribute name='version' type='Version' value='3.2.5.RELEASE'/>
+      <attribute name='bundle-symbolic-name' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+      <directive name='uses' value='org.springframework.core.convert,org.springframework.expression'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.springframework.expression.spel.ast'/>
+      <attribute name='version' type='Version' value='3.2.5.RELEASE'/>
+      <attribute name='bundle-symbolic-name' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+      <directive name='uses' value='org.springframework.core.convert,org.springframework.expression,org.springframework.expression.spel,org.springframework.expression.spel.support'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.springframework.expression.spel.standard'/>
+      <attribute name='version' type='Version' value='3.2.5.RELEASE'/>
+      <attribute name='bundle-symbolic-name' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+      <directive name='uses' value='org.springframework.core.convert,org.springframework.expression,org.springframework.expression.common,org.springframework.expression.spel,org.springframework.expression.spel.ast'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.springframework.expression.spel.support'/>
+      <attribute name='version' type='Version' value='3.2.5.RELEASE'/>
+      <attribute name='bundle-symbolic-name' value='org.springframework.expression'/>
+      <attribute name='bundle-version' type='Version' value='3.2.5.RELEASE'/>
+      <directive name='uses' value='org.springframework.core.convert,org.springframework.expression,org.springframework.expression.spel'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.springframework.core)(version&gt;=3.2.5.RELEASE)(version&lt;=3.2.5.RELEASE))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.springframework.core.convert)(version&gt;=3.2.5.RELEASE)(version&lt;=3.2.5.RELEASE))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.springframework.core.convert.support)(version&gt;=3.2.5.RELEASE)(version&lt;=3.2.5.RELEASE))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.springframework.core.style)(version&gt;=3.2.5.RELEASE)(version&lt;=3.2.5.RELEASE))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.springframework.util)(version&gt;=3.2.5.RELEASE)(version&lt;=3.2.5.RELEASE))'/>
     </requirement>
   </resource>
   <resource>

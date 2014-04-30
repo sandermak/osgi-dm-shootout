@@ -5,6 +5,7 @@
     org.springframework.beans,\
     org.springframework.context,\
     org.springframework.core,\
+    org.springframework.expression,\
     org.apache.servicemix.bundles.aopalliance,\
     org.ow2.util.bundles.commons-logging-1.1.1,\
 	org.apache.felix.gogo.runtime,\
@@ -12,5 +13,7 @@
 	osgi.cmpn,\
 	osgi.core,\
 	org.apache.felix.gogo.command,\
-	dashboard;version=latest
+	dashboard;version=latest,\
+	sensors.api;version=latest,\
+	sensors.temp;version=latest
 -runfw: org.apache.felix.framework;version='[4.2.1,4.2.1]'
