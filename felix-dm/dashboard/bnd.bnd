@@ -1,0 +1,7 @@
+-buildpath: osgi.core;version=4.3,\
+	osgi.cmpn;version=4.3,\
+	org.apache.felix.dependencymanager;version=3.1,\
+	sensors.dm.api;version=latest
+Private-Package: shootout.dm.dashboard
+Export-Package: shootout.dm.dashboard.api
+Bundle-Activator: shootout.dm.dashboard.Activator
