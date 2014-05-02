@@ -1,0 +1,2 @@
+Private-Package: shootout.dm.sensor.temp
+Bundle-Activator: shootout.dm.sensor.temp.Activator
