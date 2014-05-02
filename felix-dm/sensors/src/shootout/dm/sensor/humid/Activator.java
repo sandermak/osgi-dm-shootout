@@ -1,4 +1,4 @@
-package shootout.dm.sensor.temp;
+package shootout.dm.sensor.humid;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -15,11 +15,11 @@ public class Activator extends DependencyActivatorBase {
 	public void init(BundleContext context, DependencyManager manager)
 			throws Exception {
 		Dictionary<String, String> props = new Hashtable<String, String>();
-		props.put("sensor.type", "temperature");
+		props.put("sensor.type", "humidity");
 		
 		manager.add(createComponent()
-				.setInterface(Sensor.class.getName(), null)
-				.setImplementation(TemperatureSensor.class)
+				.setInterface(Sensor.class.getName(), props )
+				.setImplementation(HumiditySensor.class)
 		);
 		
 	}

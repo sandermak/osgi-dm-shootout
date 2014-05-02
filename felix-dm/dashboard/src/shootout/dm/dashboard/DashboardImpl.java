@@ -1,7 +1,10 @@
 package shootout.dm.dashboard;
 
+import java.util.Collections;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.osgi.framework.ServiceReference;
 
@@ -10,7 +13,8 @@ import shootout.dm.sensor.api.Sensor;
 
 public class DashboardImpl implements Dashboard {
 
-	private Sensor sensor;
+	private Set<Sensor> sensors = Collections
+			.newSetFromMap(new ConcurrentHashMap<Sensor, Boolean>());
 	private Timer timer;
 
 	public DashboardImpl() {
@@ -19,7 +23,9 @@ public class DashboardImpl implements Dashboard {
 
 	public void showDashboard() {
 		System.out.println("This is the dashboard:");
-		System.out.println("Reading: " + sensor.getReading());
+		for (Sensor sensor : sensors) {
+			System.out.println(sensor.getType() + ": " + sensor.getValue());
+		}
 	}
 
 	// Special method called by Felix DM
@@ -34,18 +40,23 @@ public class DashboardImpl implements Dashboard {
 		timer.scheduleAtFixedRate(task, 0, 10000);
 
 	}
+
 	// Special method called by Felix DM
-	public void stop() { 
+	public void stop() {
 		System.out.println("DashboardImpl deactivated");
 		timer.cancel();
 		timer = null;
 	}
-	
-	public void sensorAdded(@SuppressWarnings("rawtypes") ServiceReference ref, Object obj) {
+
+	public void sensorAdded(@SuppressWarnings("rawtypes") ServiceReference ref,
+			Object obj) {
 		System.out.println("Sensor added " + obj.toString());
+		sensors.add((Sensor) obj);
 	}
-	
-	public void sensorRemoved(@SuppressWarnings("rawtypes") ServiceReference ref, Object obj) {
+
+	public void sensorRemoved(
+			@SuppressWarnings("rawtypes") ServiceReference ref, Object obj) {
 		System.out.println("Sensor removed " + obj.toString());
+		sensors.remove((Sensor) obj);
 	}
 }

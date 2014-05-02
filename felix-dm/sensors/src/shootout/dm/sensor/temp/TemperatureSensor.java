@@ -14,8 +14,12 @@ public class TemperatureSensor implements Sensor {
 		System.out.println("TemperatureSensor activated");
 	}
 
-	public String getReading() {
+	public String getValue() {
 		return String.valueOf(new Random().nextInt(30));
+	}
+
+	public String getType() {
+		return "temperature";
 	}
 	
 }
