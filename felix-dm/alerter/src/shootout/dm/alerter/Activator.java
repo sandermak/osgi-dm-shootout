@@ -1,12 +1,10 @@
-package shootout.dm.dashboard;
+package shootout.dm.alerter;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleContext;
 
 import shootout.dm.alerter.api.Alerter;
-import shootout.dm.dashboard.api.Dashboard;
-import shootout.dm.sensor.api.Sensor;
 
 public class Activator extends DependencyActivatorBase {
 
@@ -14,12 +12,9 @@ public class Activator extends DependencyActivatorBase {
 			throws Exception {
 
 		manager.add(createComponent()
-				.setInterface(Dashboard.class.getName(), null)
-				.setImplementation(DashboardImpl.class)
-				.add(createServiceDependency().setService(Sensor.class)
-						.setCallbacks("sensorAdded", "sensorRemoved"))
-				.add(createServiceDependency().setService(Alerter.class))
-	    );
+				.setInterface(Alerter.class.getName(), null)
+				.setImplementation(AlerterImpl.class)
+		);
 
 	}
 

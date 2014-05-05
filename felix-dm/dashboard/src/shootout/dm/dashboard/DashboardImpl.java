@@ -1,6 +1,7 @@
 package shootout.dm.dashboard;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,11 +9,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.osgi.framework.ServiceReference;
 
+import shootout.dm.alerter.api.Alerter;
+import shootout.dm.alerter.api.Reading;
+import shootout.dm.alerter.api.Reading.ReadingType;
 import shootout.dm.dashboard.api.Dashboard;
 import shootout.dm.sensor.api.Sensor;
 
 public class DashboardImpl implements Dashboard {
 
+	private volatile Alerter alerter;
+	
 	private Set<Sensor> sensors = Collections
 			.newSetFromMap(new ConcurrentHashMap<Sensor, Boolean>());
 	private Timer timer;
@@ -23,8 +29,16 @@ public class DashboardImpl implements Dashboard {
 
 	public void showDashboard() {
 		System.out.println("This is the dashboard:");
+		Set<Reading> readings = new HashSet<>();
 		for (Sensor sensor : sensors) {
-			System.out.println(sensor.getType() + ": " + sensor.getValue());
+			Reading reading = new Reading(ReadingType.valueOf(sensor.getType().toUpperCase()), sensor.getValue());
+			System.out.println(sensor.getType() + ": " + reading.getValue());
+			readings.add(reading);
+		}
+		
+		String alert = alerter.getAlertMessage(readings);
+		if(alert != null) {
+			System.out.println("!!! Alert: " + alert);
 		}
 	}
 

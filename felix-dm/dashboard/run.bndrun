@@ -6,6 +6,7 @@
     org.apache.felix.dependencymanager;version=3.1.0,\
     org.apache.felix.dependencymanager.shell;version=3.0.1,\
 	dashboard;version=latest,\
+	alerter;version=latest,\
 	sensors.dm.api;version=latest,\
 	sensors.dm.temp;version=latest,\
 	sensors.dm.humid;version=latest
