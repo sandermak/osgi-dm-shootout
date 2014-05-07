@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.osgi.org/xmlns/scr/v1.1.0" name="shootout.alerter"
+	immediate="false">
+	<implementation class="shootout.ds.alerter.AlerterImpl" />
+	<property name="service.description" value="Create alerts based on readings" />
+	<service>
+		<provide interface="shootout.ds.alerter.api.Alerter" />
+	</service>
+</component>

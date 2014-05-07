@@ -8,4 +8,7 @@
 	</service>
 	<reference name="sensor" interface="shootout.ds.sensor.api.Sensor"
 		cardinality="1..n" bind="sensorAdded" unbind="sensorRemoved" policy="dynamic" />
+    <reference name="alerter" interface="shootout.ds.alerter.api.Alerter"
+        bind="setAlerter" unbind="unsetAlerter"
+		cardinality="1..1" policy="dynamic" />
 </component>

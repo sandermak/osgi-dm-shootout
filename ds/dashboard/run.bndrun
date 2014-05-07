@@ -6,6 +6,7 @@
 	osgi.core,\
 	org.apache.felix.gogo.command,\
 	dashboard;version=latest,\
+	alerter;version=latest,\
 	sensors.ds.api;version=latest,\
 	sensors.ds.temp;version=latest,\
 	sensors.ds.humid;version=latest

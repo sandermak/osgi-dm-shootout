@@ -1,6 +1,7 @@
 package shootout.dashboard;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -9,14 +10,18 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.osgi.service.component.ComponentContext;
 
 import shootout.dashboard.api.Dashboard;
+import shootout.ds.alerter.api.Alerter;
+import shootout.ds.alerter.api.Reading;
+import shootout.ds.alerter.api.Reading.ReadingType;
 import shootout.ds.sensor.api.Sensor;
 
 public class DashboardImpl implements Dashboard {
 
-
 	private Set<Sensor> sensors = Collections
 			.newSetFromMap(new ConcurrentHashMap<Sensor, Boolean>());
-	
+
+	private Alerter alerter;
+
 	private Timer timer;
 
 	public DashboardImpl() {
@@ -25,18 +30,18 @@ public class DashboardImpl implements Dashboard {
 
 	public void showDashboard() {
 		System.out.println("This is the dashboard:");
-//		Set<Reading> readings = new HashSet<>();
+		Set<Reading> readings = new HashSet<>();
 		for (Sensor sensor : sensors) {
-//			Reading reading = new Reading(ReadingType.valueOf(sensor.getType()
-//					.toUpperCase()), sensor.getValue());
-			System.out.println(sensor.getType() + ": " + sensor.getValue());
-//			readings.add(reading);
+			Reading reading = new Reading(ReadingType.valueOf(sensor.getType()
+					.toUpperCase()), sensor.getValue());
+			System.out.println(sensor.getType() + ": " + reading.getValue());
+			readings.add(reading);
 		}
 
-//		String alert = alerter.getAlertMessage(readings);
-//		if (alert != null) {
-//			System.out.println("!!! Alert: " + alert);
-//		}
+		String alert = alerter.getAlertMessage(readings);
+		if (alert != null) {
+			System.out.println("!!! Alert: " + alert);
+		}
 	}
 
 	protected void activate(ComponentContext context) {
@@ -55,14 +60,24 @@ public class DashboardImpl implements Dashboard {
 		timer.cancel();
 		timer = null;
 	}
-	
-	public synchronized void sensorRemoved(Sensor sensor) {
+
+	public void sensorRemoved(Sensor sensor) {
 		System.out.println("Sensor removed " + sensor.toString());
 		sensors.remove(sensor);
 	}
 
-	public synchronized void sensorAdded(Sensor sensor) {
+	public void sensorAdded(Sensor sensor) {
 		System.out.println("Sensor added " + sensor.toString());
 		sensors.add(sensor);
+	}
+
+	public synchronized void setAlerter(Alerter alerter) {
+		this.alerter = alerter;
+	}
+
+	public synchronized void unsetAlerter(Alerter alerter) {
+		if (this.alerter == alerter) {
+			this.alerter = null;
+		}
 	}
 }

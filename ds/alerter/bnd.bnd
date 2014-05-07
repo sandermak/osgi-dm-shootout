@@ -1,0 +1,4 @@
+Private-Package: shootout.ds.alerter
+Export-Package: shootout.ds.alerter.api
+Include-Resource: OSGI-INF=OSGI-INF
+Service-Component: OSGI-INF/alerter.xml
