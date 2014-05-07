@@ -5,6 +5,7 @@
 	org.apache.felix.gogo.command,\
     org.apache.felix.dependencymanager;version=3.1.0,\
     org.apache.felix.dependencymanager.shell;version=3.0.1,\
+    org.apache.felix.configadmin,\
 	dashboard;version=latest,\
 	alerter;version=latest,\
 	sensors.dm.api;version=latest,\

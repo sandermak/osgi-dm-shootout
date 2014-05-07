@@ -3,6 +3,7 @@ package shootout.dm.dashboard;
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleContext;
+import org.osgi.service.cm.ConfigurationAdmin;
 
 import shootout.dm.alerter.api.Alerter;
 import shootout.dm.dashboard.api.Dashboard;
@@ -19,7 +20,13 @@ public class Activator extends DependencyActivatorBase {
 				.add(createServiceDependency().setService(Sensor.class)
 						.setCallbacks("sensorAdded", "sensorRemoved"))
 				.add(createServiceDependency().setService(Alerter.class))
-	    );
+				.add(createConfigurationDependency().setPid("dm.dashboard"))
+        );				
+		
+		manager.add(createComponent().setImplementation(ConfigCreator.class)
+				.add(createServiceDependency().setService(
+						ConfigurationAdmin.class)));		
+
 
 	}
 

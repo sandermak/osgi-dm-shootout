@@ -1,6 +1,7 @@
 package shootout.dm.dashboard;
 
 import java.util.Collections;
+import java.util.Dictionary;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
@@ -8,6 +9,8 @@ import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.osgi.framework.ServiceReference;
+import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.cm.ManagedService;
 
 import shootout.dm.alerter.api.Alerter;
 import shootout.dm.alerter.api.Reading;
@@ -15,10 +18,12 @@ import shootout.dm.alerter.api.Reading.ReadingType;
 import shootout.dm.dashboard.api.Dashboard;
 import shootout.dm.sensor.api.Sensor;
 
-public class DashboardImpl implements Dashboard {
+public class DashboardImpl implements Dashboard, ManagedService {
+	private static final Integer DEFAULT_REFRESH_INTERVAL = 10000;
 
 	private volatile Alerter alerter;
-	
+	private volatile Integer refreshinterval = DEFAULT_REFRESH_INTERVAL;
+
 	private Set<Sensor> sensors = Collections
 			.newSetFromMap(new ConcurrentHashMap<Sensor, Boolean>());
 	private Timer timer;
@@ -31,13 +36,14 @@ public class DashboardImpl implements Dashboard {
 		System.out.println("This is the dashboard:");
 		Set<Reading> readings = new HashSet<>();
 		for (Sensor sensor : sensors) {
-			Reading reading = new Reading(ReadingType.valueOf(sensor.getType().toUpperCase()), sensor.getValue());
+			Reading reading = new Reading(ReadingType.valueOf(sensor.getType()
+					.toUpperCase()), sensor.getValue());
 			System.out.println(sensor.getType() + ": " + reading.getValue());
 			readings.add(reading);
 		}
-		
+
 		String alert = alerter.getAlertMessage(readings);
-		if(alert != null) {
+		if (alert != null) {
 			System.out.println("!!! Alert: " + alert);
 		}
 	}
@@ -51,7 +57,7 @@ public class DashboardImpl implements Dashboard {
 				showDashboard();
 			}
 		};
-		timer.scheduleAtFixedRate(task, 0, 10000);
+		timer.scheduleAtFixedRate(task, 0, refreshinterval);
 
 	}
 
@@ -72,5 +78,17 @@ public class DashboardImpl implements Dashboard {
 			@SuppressWarnings("rawtypes") ServiceReference ref, Object obj) {
 		System.out.println("Sensor removed " + obj.toString());
 		sensors.remove((Sensor) obj);
+	}
+
+	@Override
+	public void updated(Dictionary<String, ?> properties)
+			throws ConfigurationException {
+		Integer refresh = (Integer) properties.get("refreshinterval");
+		if (refresh != null) {
+			refreshinterval = refresh;
+		} else {
+			refreshinterval = DEFAULT_REFRESH_INTERVAL;
+		}
+		
 	}
 }
