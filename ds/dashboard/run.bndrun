@@ -2,6 +2,7 @@
 	org.apache.felix.gogo.runtime,\
 	org.apache.felix.gogo.shell,\
 	org.apache.felix.log,\
+	org.apache.felix.configadmin,\
 	osgi.cmpn,\
 	osgi.core,\
 	org.apache.felix.gogo.command,\

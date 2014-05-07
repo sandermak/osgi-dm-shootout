@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component xmlns="http://www.osgi.org/xmlns/scr/v1.1.0" name="shootout.dashboard"
-	immediate="true">
-	<implementation class="shootout.dashboard.DashboardImpl" />
+	immediate="true" configuration-policy="require">
+	<implementation class="shootout.ds.dashboard.DashboardImpl" />
 	<property name="service.description" value="Sample dashboard" />
 	<service>
 		<provide interface="shootout.dashboard.api.Dashboard" />

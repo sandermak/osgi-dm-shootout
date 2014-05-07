@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.osgi.org/xmlns/scr/v1.1.0" name="shootout.configcreator"
+	immediate="true">
+	<implementation class="shootout.ds.dashboard.ConfigCreator" />
+	<property name="service.description" value="Just to create a config" />
+    <reference name="configAdmin" interface="org.osgi.service.cm.ConfigurationAdmin"
+        bind="setConfigAdmin" cardinality="1..1" policy="dynamic" />
+</component>

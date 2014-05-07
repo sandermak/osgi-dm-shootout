@@ -1,4 +1,4 @@
-package shootout.dashboard;
+package shootout.ds.dashboard;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,10 +9,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.osgi.service.component.ComponentContext;
 
-import shootout.dashboard.api.Dashboard;
 import shootout.ds.alerter.api.Alerter;
 import shootout.ds.alerter.api.Reading;
 import shootout.ds.alerter.api.Reading.ReadingType;
+import shootout.ds.dashboard.api.Dashboard;
 import shootout.ds.sensor.api.Sensor;
 
 public class DashboardImpl implements Dashboard {
@@ -52,7 +52,8 @@ public class DashboardImpl implements Dashboard {
 				showDashboard();
 			}
 		};
-		timer.scheduleAtFixedRate(task, 0, 10000);
+		timer.scheduleAtFixedRate(task, 0, (Integer) context.getProperties()
+				.get("refreshinterval"));
 
 	}
 

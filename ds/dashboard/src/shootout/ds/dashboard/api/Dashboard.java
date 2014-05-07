@@ -1,4 +1,4 @@
-package shootout.dashboard.api;
+package shootout.ds.dashboard.api;
 
 public interface Dashboard {
 
