@@ -4,4 +4,4 @@ Include-Resource: OSGI-INF=OSGI-INF
 Service-Component: OSGI-INF/dashboard.xml
 -buildpath: osgi.cmpn;version=4.3,\
 	osgi.core;version=4.3,\
-	sensors.api;version=latest
+	sensors.ds.api;version=latest

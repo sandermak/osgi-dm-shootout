@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component name="shootout.sensors.temp" immediate="false">
-  <implementation class="shootout.sensor.temp.TemperatureSensor" />
+<component name="shootout.ds.sensors.temp" immediate="false">
+  <implementation class="shootout.ds.sensor.temp.TemperatureSensor" />
   <property name="service.description" value="Temperature Sensor" />
   <service>
-    <provide interface="shootout.sensor.api.Sensor" />
+    <provide interface="shootout.ds.sensor.api.Sensor" />
   </service>
 </component>

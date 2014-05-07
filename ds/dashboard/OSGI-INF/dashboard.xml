@@ -6,6 +6,6 @@
 	<service>
 		<provide interface="shootout.dashboard.api.Dashboard" />
 	</service>
-	<reference name="sensor" interface="shootout.sensor.api.Sensor"
-		cardinality="1..1" bind="setSensor" unbind="unsetSensor" />
+	<reference name="sensor" interface="shootout.ds.sensor.api.Sensor"
+		cardinality="1..n" bind="sensorAdded" unbind="sensorRemoved" policy="dynamic" />
 </component>
