@@ -1,15 +1,15 @@
-package shootout.dm.sensor.humid;
+package shootout.blueprint.sensor.humid;
 
 import java.util.Random;
 
-import shootout.dm.sensor.api.Sensor;
+import shootout.blueprint.sensor.api.Sensor;
 
 public class HumiditySensor implements Sensor {
-	
+
 	public HumiditySensor() {
 		System.out.println("HumiditySensor instantiated");
 	}
-
+	
 	public String getType() {
 		return "humidity";
 	}

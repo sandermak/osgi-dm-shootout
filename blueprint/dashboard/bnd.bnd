@@ -1,5 +1,5 @@
 Private-Package: shootout.dashboard
 Export-Package: shootout.dashboard.api
 -includeresource: OSGI-INF=OSGI-INF
--buildpath: sensors.api;version=latest,\
-	alerter;version=latest
+-buildpath: alerter;version=latest,\
+	sensors.blueprint.api;version=latest

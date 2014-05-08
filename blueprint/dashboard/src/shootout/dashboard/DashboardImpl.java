@@ -1,15 +1,20 @@
 package shootout.dashboard;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import shootout.blueprint.alerter.api.Alerter;
+import shootout.blueprint.alerter.api.Reading;
+import shootout.blueprint.alerter.api.Reading.ReadingType;
+import shootout.blueprint.sensor.api.Sensor;
 import shootout.dashboard.api.Dashboard;
-import shootout.sensor.api.Sensor;
 
 public class DashboardImpl implements Dashboard {
 
-	private Sensor sensor;
+	protected List<Sensor> sensors;
 	private Alerter alerter;
 	private Timer timer;
 
@@ -19,7 +24,18 @@ public class DashboardImpl implements Dashboard {
 
 	public void showDashboard() {
 		System.out.println("This is the dashboard:");
-		System.out.println("Reading: " + sensor.getReading());
+		Set<Reading> readings = new HashSet<>();
+		for (Sensor sensor : sensors) {
+			Reading reading = new Reading(ReadingType.valueOf(sensor.getType()
+					.toUpperCase()), sensor.getValue());
+			System.out.println(sensor.getType() + ": " + reading.getValue());
+			readings.add(reading);
+		}
+
+		String alert = alerter.getAlertMessage(readings);
+		if (alert != null) {
+			System.out.println("!!! Alert: " + alert);
+		}
 	}
 
 	// No special name, referenced with init-method property. Must be public.
@@ -42,16 +58,10 @@ public class DashboardImpl implements Dashboard {
 		timer = null;
 	}
 	
-	public synchronized void setSensor(Sensor sensor) {
-		this.sensor = sensor;
+	public synchronized void setSensors(List<Sensor> sensors) {
+		this.sensors = sensors;
 	}
-	
-	public synchronized void unsetSensor(Sensor sensor) {
-		if (this.sensor == sensor) {
-			this.sensor = null;
-		}
-	}
-	
+
 	public synchronized void setAlerter(Alerter alerter) {
 		this.alerter = alerter;
 	}

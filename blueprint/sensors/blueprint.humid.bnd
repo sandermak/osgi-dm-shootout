@@ -1,0 +1,2 @@
+-includeresource OSGI-INF/blueprint/humid.xml=OSGI-INF/blueprint/humid.xml
+Private-Package: shootout.blueprint.sensor.humid

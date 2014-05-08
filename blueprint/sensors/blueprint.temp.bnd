@@ -1,0 +1,2 @@
+Private-Package: shootout.blueprint.sensor.temp
+-includeresource: OSGI-INF/blueprint/temp.xml=OSGI-INF/blueprint/temp.xml

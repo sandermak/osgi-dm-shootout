@@ -1,2 +1,0 @@
-Private-Package: shootout.sensor.temp
--includeresource: OSGI-INF=OSGI-INF

@@ -15,6 +15,7 @@
 	org.apache.felix.gogo.command,\
 	dashboard;version=latest,\
 	alerter;version=latest,\
-	sensors.api;version=latest,\
-	sensors.temp;version=latest
+	sensors.blueprint.api;version=latest,\
+	sensors.blueprint.temp;version=latest,\
+	sensors.blueprint.humid;version=latest
 -runfw: org.apache.felix.framework;version='[4.2.1,4.2.1]'

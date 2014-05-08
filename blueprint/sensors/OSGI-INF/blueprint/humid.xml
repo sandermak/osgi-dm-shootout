@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
 	<service id="tempService" interface="shootout.blueprint.sensor.api.Sensor"
-		ref="temp" />
-	<bean id="temp" class="shootout.blueprint.sensor.temp.TemperatureSensor">
+		ref="humid" />
+	<bean id="humid" class="shootout.blueprint.sensor.humid.HumiditySensor">
 	</bean>
 </blueprint>

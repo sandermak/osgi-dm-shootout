@@ -3,8 +3,8 @@
 	<service id="dashboardService" interface="shootout.dashboard.api.Dashboard"
 		ref="dashboard" />
 	<bean id="dashboard" init-method="myActivate" destroy-method="myDeactivate" class="shootout.dashboard.DashboardImpl">
-		<property name="sensor">
-			<reference interface="shootout.sensor.api.Sensor"></reference>
+		<property name="sensors">
+			<reference-list interface="shootout.blueprint.sensor.api.Sensor"></reference-list>
 		</property>
 		<property name="alerter">
 			<reference interface="shootout.blueprint.alerter.api.Alerter"></reference>
