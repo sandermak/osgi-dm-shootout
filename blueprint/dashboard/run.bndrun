@@ -14,6 +14,7 @@
 	osgi.core,\
 	org.apache.felix.gogo.command,\
 	dashboard;version=latest,\
+	alerter;version=latest,\
 	sensors.api;version=latest,\
 	sensors.temp;version=latest
 -runfw: org.apache.felix.framework;version='[4.2.1,4.2.1]'

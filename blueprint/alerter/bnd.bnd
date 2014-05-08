@@ -1,0 +1,3 @@
+Private-Package: shootout.blueprint.alerter
+Export-Package: shootout.blueprint.alerter.api
+-includeresource: OSGI-INF=OSGI-INF

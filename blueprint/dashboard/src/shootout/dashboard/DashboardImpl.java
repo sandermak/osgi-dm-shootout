@@ -3,12 +3,14 @@ package shootout.dashboard;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import shootout.blueprint.alerter.api.Alerter;
 import shootout.dashboard.api.Dashboard;
 import shootout.sensor.api.Sensor;
 
 public class DashboardImpl implements Dashboard {
 
 	private Sensor sensor;
+	private Alerter alerter;
 	private Timer timer;
 
 	public DashboardImpl() {
@@ -43,10 +45,15 @@ public class DashboardImpl implements Dashboard {
 	public synchronized void setSensor(Sensor sensor) {
 		this.sensor = sensor;
 	}
-
+	
 	public synchronized void unsetSensor(Sensor sensor) {
 		if (this.sensor == sensor) {
 			this.sensor = null;
 		}
 	}
+	
+	public synchronized void setAlerter(Alerter alerter) {
+		this.alerter = alerter;
+	}
+
 }

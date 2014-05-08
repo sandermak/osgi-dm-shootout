@@ -6,5 +6,8 @@
 		<property name="sensor">
 			<reference interface="shootout.sensor.api.Sensor"></reference>
 		</property>
+		<property name="alerter">
+			<reference interface="shootout.blueprint.alerter.api.Alerter"></reference>
+		</property>
 	</bean>
 </blueprint>
