@@ -2,12 +2,11 @@ package shootout.ds.dashboard;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
-
-import org.osgi.service.component.ComponentContext;
 
 import shootout.ds.alerter.api.Alerter;
 import shootout.ds.alerter.api.Reading;
@@ -44,7 +43,7 @@ public class DashboardImpl implements Dashboard {
 		}
 	}
 
-	protected void activate(ComponentContext context) {
+	protected void activate(Map<String, Object> properties) {
 		System.out.println("DashboardImpl activated");
 		timer = new Timer();
 		TimerTask task = new TimerTask() {
@@ -52,12 +51,12 @@ public class DashboardImpl implements Dashboard {
 				showDashboard();
 			}
 		};
-		timer.scheduleAtFixedRate(task, 0, (Integer) context.getProperties()
-				.get("refreshinterval"));
+		timer.scheduleAtFixedRate(task, 0,
+				(Integer) properties.get("refreshinterval"));
 
 	}
 
-	protected void deactivate(ComponentContext context) {
+	protected void deactivate() {
 		timer.cancel();
 		timer = null;
 	}
