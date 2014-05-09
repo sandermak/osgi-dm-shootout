@@ -1,5 +1,6 @@
-Private-Package: shootout.dashboard
-Export-Package: shootout.dashboard.api
+Private-Package: shootout.blueprint.dashboard
+Export-Package: shootout.blueprint.dashboard.api
 -includeresource: OSGI-INF=OSGI-INF
 -buildpath: alerter;version=latest,\
-	sensors.blueprint.api;version=latest
+	sensors.blueprint.api;version=latest,\
+	org.apache.felix.configadmin

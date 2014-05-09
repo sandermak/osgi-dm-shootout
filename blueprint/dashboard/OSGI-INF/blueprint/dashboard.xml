@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
-	<service id="dashboardService" interface="shootout.dashboard.api.Dashboard"
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:bp-comp="http://www.eclipse.org/gemini/blueprint/schema/blueprint-compendium"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	  http://www.springframework.org/schema/beans 
+	  http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	  http://www.osgi.org/xmlns/blueprint/v1.0.0
+      http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd	
+      http://www.eclipse.org/gemini/blueprint/schema/blueprint-compendium 
+	  http://www.eclipse.org/gemini/blueprint/schema/blueprint-compendium/gemini-blueprint-compendium-1.0.xsd">
+	<!-- The fact that we have to provide the beans schemalocation above is 
+		quite non-obvious, but without it the Gemini-blueprint xsd blows up... -->
+
+	<bean id="configCreator" class="shootout.blueprint.dashboard.ConfigCreator"
+		init-method="activate">
+		<property name="configAdmin">
+			<reference interface="org.osgi.service.cm.ConfigurationAdmin" />
+		</property>
+	</bean>
+
+	<service id="dashboardService" interface="shootout.blueprint.dashboard.api.Dashboard"
 		ref="dashboard" />
-	<bean id="dashboard" init-method="myActivate" destroy-method="myDeactivate" class="shootout.dashboard.DashboardImpl">
+	<bean id="dashboard" init-method="myActivate" destroy-method="myDeactivate"
+		class="shootout.blueprint.dashboard.DashboardImpl" depends-on="configCreator">
+		<!-- Since there seems to be no way to express a required config dependency 
+			with this setup, we use the depends-on above to make sure the config is provisioned 
+			before creating the Dashboard. -->
+
+		<!-- The (gemini specific) managed-properties injects all properties from 
+			the given config into the bean -->
+		<bp-comp:managed-properties persistent-id="blueprint.dashboard"
+			autowire-on-update="true" />
 		<property name="sensors">
 			<reference-list interface="shootout.blueprint.sensor.api.Sensor"></reference-list>
 		</property>

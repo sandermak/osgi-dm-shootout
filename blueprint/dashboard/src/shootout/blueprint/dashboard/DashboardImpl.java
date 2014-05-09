@@ -1,4 +1,4 @@
-package shootout.dashboard;
+package shootout.blueprint.dashboard;
 
 import java.util.HashSet;
 import java.util.List;
@@ -9,13 +9,14 @@ import java.util.TimerTask;
 import shootout.blueprint.alerter.api.Alerter;
 import shootout.blueprint.alerter.api.Reading;
 import shootout.blueprint.alerter.api.Reading.ReadingType;
+import shootout.blueprint.dashboard.api.Dashboard;
 import shootout.blueprint.sensor.api.Sensor;
-import shootout.dashboard.api.Dashboard;
 
 public class DashboardImpl implements Dashboard {
 
 	protected List<Sensor> sensors;
 	private Alerter alerter;
+	private Integer refreshinterval;
 	private Timer timer;
 
 	public DashboardImpl() {
@@ -47,23 +48,27 @@ public class DashboardImpl implements Dashboard {
 				showDashboard();
 			}
 		};
-		timer.scheduleAtFixedRate(task, 0, 10000);
+		timer.scheduleAtFixedRate(task, 0, refreshinterval);
 
 	}
 
 	// No special name, referenced with destroy-method property. Must be public.
-	public void myDeactivate() { 
+	public void myDeactivate() {
 		System.out.println("DashboardImpl deactivated");
 		timer.cancel();
 		timer = null;
 	}
-	
+
 	public synchronized void setSensors(List<Sensor> sensors) {
 		this.sensors = sensors;
 	}
 
 	public synchronized void setAlerter(Alerter alerter) {
 		this.alerter = alerter;
+	}
+
+	public synchronized void setRefreshinterval(Integer refreshinterval) {
+		this.refreshinterval = refreshinterval;
 	}
 
 }
