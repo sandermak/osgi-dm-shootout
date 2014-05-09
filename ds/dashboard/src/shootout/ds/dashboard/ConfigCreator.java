@@ -6,14 +6,12 @@ import java.util.Hashtable;
 
 import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
-import org.osgi.service.component.ComponentContext;
-
 
 public class ConfigCreator {
 	
 	private ConfigurationAdmin configAdmin;
 	
-	protected void activate(ComponentContext context) throws IOException {
+	protected void activate() throws IOException {
 		Configuration config = configAdmin.getConfiguration("shootout.dashboard");
 		Dictionary<String, Object> props = new Hashtable<>();
 		props.put("refreshinterval", 20000);

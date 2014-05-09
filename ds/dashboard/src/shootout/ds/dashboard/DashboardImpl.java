@@ -57,6 +57,7 @@ public class DashboardImpl implements Dashboard {
 	}
 
 	protected void deactivate() {
+		System.out.println("DashboardImpl deactivated");
 		timer.cancel();
 		timer = null;
 	}
