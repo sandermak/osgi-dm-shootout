@@ -1,6 +1,8 @@
--buildpath: org.apache.felix.ipojo,\
+-buildpath:  \
+	org.apache.felix.ipojo,\
 	osgi.core,\
 	org.apache.felix.ipojo.handler.whiteboard,\
-	org.apache.felix.ipojo.api
+	org.apache.felix.ipojo.api,\
+	org.apache.felix.framework
 
 -sub: *.bnd

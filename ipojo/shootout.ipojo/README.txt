@@ -9,3 +9,12 @@ Things to figure out:
 Gogo shell commands:
 
 instances		displays component instances and their validity
+
+
+
+
+
+Core mechanism:
+Components versus instances. Component is just a type declaration and does not automatically result in an instance being created.
+To create an instance, use the @Instantiate annotation.
+

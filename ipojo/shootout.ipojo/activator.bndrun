@@ -15,7 +15,8 @@
 	org.apache.felix.log;version='[1.0.1,1.0.2)',\
 	shootout.ipojo.activator;version=latest
 
--runrequires: osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.ipojo.gogo)',\
