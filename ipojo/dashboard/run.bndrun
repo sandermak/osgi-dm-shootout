@@ -1,0 +1,17 @@
+-runbundles:  \
+	org.apache.felix.gogo.runtime,\
+	org.apache.felix.gogo.shell,\
+	osgi.cmpn,\
+	osgi.core,\
+	org.apache.felix.gogo.command,\
+	org.apache.felix.dependencymanager;version=3.1.0,\
+	org.apache.felix.dependencymanager.shell;version=3.0.1,\
+	org.apache.felix.configadmin,\
+	dashboard;version=latest,\
+	alerter;version=latest,\
+	sensors.ipojo.api;version=latest,\
+	sensors.ipojo.temp;version=latest,\
+	sensors.ipojo.humid;version=latest,\
+	org.apache.felix.ipojo,\
+	org.apache.felix.ipojo.gogo
+-runfw: org.apache.felix.framework;version='[4.2.1,4.2.1]'

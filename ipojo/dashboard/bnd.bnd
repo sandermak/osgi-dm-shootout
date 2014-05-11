@@ -1,0 +1,12 @@
+-plugin: org.apache.felix.ipojo.bnd.PojoizationPlugin;path:='../build/lib/org.apache.felix.ipojo-1.11.2.jar,../build/lib/bnd-ipojo-plugin-1.11.2.jar,../build/lib/org.apache.felix.ipojo.manipulator-1.11.2.jar'
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	alerter;version=latest,\
+	sensors.ipojo.api;version=latest,\
+	osgi.cmpn;version=4.3,\
+	osgi.core;version=4.3,\
+	org.apache.felix.ipojo
+Export-Package:  \
+	shootout.ipojo.dashboard.api
+Private-Package:  \
+	shootout.ipojo.dashboard
