@@ -5,7 +5,8 @@ Bundle-Version: 0.0.0.${tstamp}
 	org.apache.felix.dependencymanager,\
 	osgi.core,\
 	osgi.cmpn,\
-	org.apache.commons.lang3
+	org.apache.commons.lang3,\
+	monitor;version=latest
 Private-Package:  \
 	sensors.impl
 Export-Package:  \

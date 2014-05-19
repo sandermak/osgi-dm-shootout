@@ -5,6 +5,8 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
+import monitor.Monitor;
+
 import org.apache.commons.lang3.time.StopWatch;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.osgi.framework.BundleActivator;
@@ -26,7 +28,8 @@ public class Activator implements BundleActivator {
 		ObjectMapper mapper = new ObjectMapper();
 		Province[] provinces = mapper.readValue(this.getClass().getResourceAsStream("postalcodes.json"), Province[].class);
 		System.out.println("Read " + provinces.length + " provinces.");
-		
+
+		Monitor.event("Start register sensors");
 		StopWatch sw = new StopWatch();
 		sw.start();
 		for (Province province : provinces) {
@@ -39,17 +42,21 @@ public class Activator implements BundleActivator {
 						properties.put("municipality", municipality.getName());
 						properties.put("city", city.getName());
 						properties.put("postalcode", postalCode);
-						ServiceRegistration registration = context.registerService(Sensor.class.getName(), sensor, properties);
-						registrations.add(registration);
-						if (registrations.size() % 50000 == 0) {
-							System.out.println("Registered " + registrations.size() + " services.");
-						}
+						// LIMIT THE AMOUNT OF SERVICES FOR NOW
+//						if (municipality.getName().equals("Amsterdam")) {
+							ServiceRegistration registration = context.registerService(Sensor.class.getName(), sensor, properties);
+							registrations.add(registration);
+							if (registrations.size() % 50000 == 0) {
+								System.out.println("Registered " + registrations.size() + " services.");
+							}
+//						}
 					}
 				}
 			}
 		}
 		sw.stop();
 		System.out.println("Registered " + registrations.size() + " services in " + sw.getTime() + " ms.");
+		Monitor.event("End register sensors");
 	}
 
 	@Override

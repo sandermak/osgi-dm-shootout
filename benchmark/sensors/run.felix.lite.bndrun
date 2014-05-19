@@ -1,0 +1,15 @@
+-runfw: org.apache.felix.framework;version='[4,5)'
+-runee: JavaSE-1.7
+-runsystemcapabilities: ${native_capability}
+
+-resolve.effective: active
+
+-runbundles:  \
+	jackson-core-asl;version='[1.9.8,1.9.9)',\
+	jackson-mapper-asl;version='[1.9.8,1.9.9)',\
+	org.apache.commons.lang3;version='[3.1.0,3.1.1)',\
+	sensors;version=latest
+
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=sensors)'
+-runvm: -Xmx1024M
