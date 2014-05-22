@@ -17,7 +17,8 @@
 	osgi.cmpn,\
 	monitor;version=latest,\
 	org.apache.felix.dependencymanager,\
-	dm.client;version=latest
+	dm.client;version=latest,\
+	sensors.api;version=latest
 -runrequires:  \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\

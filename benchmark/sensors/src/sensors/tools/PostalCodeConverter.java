@@ -9,9 +9,9 @@ import java.util.List;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import sensors.model.City;
-import sensors.model.Municipality;
-import sensors.model.Province;
+import sensors.api.model.City;
+import sensors.api.model.Municipality;
+import sensors.api.model.Province;
 
 public class PostalCodeConverter {
 

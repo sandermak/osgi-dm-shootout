@@ -1,0 +1,27 @@
+-runfw: org.eclipse.osgi;version='[3.7,4)'
+-runee: JavaSE-1.7
+-runsystemcapabilities: ${native_capability}
+
+-resolve.effective: active
+
+-runbundles:  \
+	sensors;version=latest,\
+	jackson-core-asl;version='[1.9.8,1.9.9)',\
+	jackson-mapper-asl;version='[1.9.8,1.9.9)',\
+	org.apache.commons.lang3;version='[3.1.0,3.1.1)',\
+	org.apache.felix.gogo.command;version='[0.12.0,0.12.1)',\
+	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
+	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
+	ds.client;version=latest,\
+	org.apache.felix.log,\
+	osgi.cmpn,\
+	monitor;version=latest,\
+	org.apache.felix.dependencymanager,\
+	dm.client;version=latest,\
+	sensors.api;version=latest
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=sensors)',\
+	osgi.identity;filter:='(osgi.identity=ds.client)'
+-runvm: -Xmx1024M -Dosgi.console -Dorg.apache.felix.dependencymanager.filterindexx="objectClass,municipality,city;municipality,city"

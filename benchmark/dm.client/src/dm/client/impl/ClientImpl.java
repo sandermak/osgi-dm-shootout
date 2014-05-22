@@ -1,7 +1,8 @@
 package dm.client.impl;
 
+import monitor.Constants;
 import monitor.Monitor;
-import sensors.Sensor;
+import sensors.api.Sensor;
 import dm.client.Client;
 
 public class ClientImpl implements Client {
@@ -14,8 +15,8 @@ public class ClientImpl implements Client {
 		}
 		count ++;
 //		System.out.println("added " + sensor + " #" + count);
-		if (count == 19021) {
-			System.out.println("Added all sensors...");
+		if (count == Constants.EXPECTED_SERVICE_COUNT) {
+			System.out.println("Added all " + count + " sensors...");
 			Monitor.event("Added sensors");
 		}
 	}

@@ -4,7 +4,8 @@ Bundle-Version: 0.0.0.${tstamp}
 	monitor;version=latest,\
 	osgi.cmpn,\
 	osgi.core,\
-	org.apache.felix.dependencymanager
+	org.apache.felix.dependencymanager,\
+	sensors.api;version=latest
 Private-Package:  \
 	dm.client.impl
 Bundle-Activator: dm.client.impl.Activator

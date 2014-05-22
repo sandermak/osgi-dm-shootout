@@ -17,7 +17,7 @@
 	osgi.cmpn,\
 	org.apache.felix.scr,\
 	monitor;version=latest,\
-
+	sensors.api;version=latest
 -runrequires:  \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\

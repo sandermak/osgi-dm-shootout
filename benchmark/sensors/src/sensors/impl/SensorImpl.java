@@ -1,6 +1,6 @@
 package sensors.impl;
 
-import sensors.Sensor;
+import sensors.api.Sensor;
 
 public class SensorImpl implements Sensor {
 

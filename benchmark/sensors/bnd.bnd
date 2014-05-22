@@ -6,7 +6,8 @@ Bundle-Version: 0.0.0.${tstamp}
 	osgi.core,\
 	osgi.cmpn,\
 	org.apache.commons.lang3,\
-	monitor;version=latest
+	monitor;version=latest,\
+	sensors.api;version=latest
 Private-Package:  \
 	sensors.impl
 Export-Package:  \

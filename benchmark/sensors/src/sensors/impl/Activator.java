@@ -13,10 +13,10 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
-import sensors.Sensor;
-import sensors.model.City;
-import sensors.model.Municipality;
-import sensors.model.Province;
+import sensors.api.Sensor;
+import sensors.api.model.City;
+import sensors.api.model.Municipality;
+import sensors.api.model.Province;
 
 public class Activator implements BundleActivator {
 	
@@ -32,6 +32,8 @@ public class Activator implements BundleActivator {
 		Monitor.event("Start register sensors");
 		StopWatch sw = new StopWatch();
 		sw.start();
+		int count = 0;
+		int max = 5000;
 		for (Province province : provinces) {
 			for (Municipality municipality : province.getMunicipalities()) {
 				for (City city : municipality.getCities()) {
@@ -43,13 +45,16 @@ public class Activator implements BundleActivator {
 						properties.put("city", city.getName());
 						properties.put("postalcode", postalCode);
 						// LIMIT THE AMOUNT OF SERVICES FOR NOW
-//						if (municipality.getName().equals("Amsterdam")) {
-							ServiceRegistration registration = context.registerService(Sensor.class.getName(), sensor, properties);
-							registrations.add(registration);
-							if (registrations.size() % 50000 == 0) {
-								System.out.println("Registered " + registrations.size() + " services.");
+						if (municipality.getName().equals("Amsterdam")) {
+							if (count < max) {
+								ServiceRegistration registration = context.registerService(Sensor.class.getName(), sensor, properties);
+								registrations.add(registration);
+								count ++;
+								if (registrations.size() % 10000 == 0) {
+									Monitor.event("registered", registrations.size());
+								}
 							}
-//						}
+						}
 					}
 				}
 			}

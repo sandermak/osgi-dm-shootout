@@ -11,7 +11,9 @@
 	org.apache.felix.gogo.command;version='[0.12.0,0.12.1)',\
 	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
 	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
-	sensors;version=latest
+	sensors;version=latest,\
+	monitor;version=latest,\
+	sensors.api;version=latest
 
 -runrequires:  \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
