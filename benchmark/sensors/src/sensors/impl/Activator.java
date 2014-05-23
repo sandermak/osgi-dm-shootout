@@ -33,7 +33,7 @@ public class Activator implements BundleActivator {
 		StopWatch sw = new StopWatch();
 		sw.start();
 		int count = 0;
-		int max = 5000;
+//		int max = 5000;
 		for (Province province : provinces) {
 			for (Municipality municipality : province.getMunicipalities()) {
 				for (City city : municipality.getCities()) {
@@ -45,8 +45,8 @@ public class Activator implements BundleActivator {
 						properties.put("city", city.getName());
 						properties.put("postalcode", postalCode);
 						// LIMIT THE AMOUNT OF SERVICES FOR NOW
-						if (municipality.getName().equals("Amsterdam")) {
-							if (count < max) {
+//						if (municipality.getName().equals("Amsterdam")) {
+//							if (count < max) {
 								ServiceRegistration registration = context.registerService(Sensor.class.getName(), sensor, properties);
 								registrations.add(registration);
 								count ++;
@@ -55,8 +55,8 @@ public class Activator implements BundleActivator {
 								}
 							}
 						}
-					}
-				}
+//					}
+//				}
 			}
 		}
 		sw.stop();

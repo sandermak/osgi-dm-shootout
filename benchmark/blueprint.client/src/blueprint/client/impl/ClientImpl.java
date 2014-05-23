@@ -19,9 +19,9 @@ public class ClientImpl implements Client {
 			Monitor.event("Added first sensor");
 		}
 
-		System.out.println("added " + sensor + " #" + count);
+//		System.out.println("added " + sensor + " #" + count);
 		if (prevCount + 1 == Constants.EXPECTED_SERVICE_COUNT) {
-//			System.out.println("Added all " + count + " sensors...");
+			System.out.println("Added all " + count + " sensors...");
 			Monitor.event("Added sensors");
 		}
 	}
@@ -32,7 +32,7 @@ public class ClientImpl implements Client {
 	
 	public void start() {
 		System.out.println("Activate... ");
-		System.out.println("All sensors added: " + sensors.size());
+		System.out.println("All sensors available: " + sensors.size());
 	}
 	
 	public void deactivate() {
