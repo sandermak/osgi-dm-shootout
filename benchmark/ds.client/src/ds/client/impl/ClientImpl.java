@@ -1,5 +1,7 @@
 package ds.client.impl;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import monitor.Constants;
 import monitor.Monitor;
 import sensors.api.Sensor;
@@ -7,15 +9,15 @@ import ds.client.Client;
 
 public class ClientImpl implements Client {
 	
-	int count;
+	AtomicInteger count = new AtomicInteger(0);
 
 	void addedSensor(Sensor sensor) {
-		if (count == 0) {
+		int prevCount = count.getAndIncrement();
+		if (prevCount == 0) {
 			Monitor.event("Added first sensor");
 		}
-		count ++;
 //		System.out.println("added " + sensor + " #" + count);
-		if (count == Constants.EXPECTED_SERVICE_COUNT) {
+		if (prevCount + 1 == Constants.EXPECTED_SERVICE_COUNT) {
 			System.out.println("Added all " + count + " sensors...");
 			Monitor.event("Added sensors");
 		}

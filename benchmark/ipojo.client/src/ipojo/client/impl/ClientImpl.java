@@ -1,5 +1,7 @@
 package ipojo.client.impl;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import ipojo.client.Client;
 import monitor.Constants;
 import monitor.Monitor;
@@ -20,16 +22,16 @@ import sensors.api.Sensor;
 @Instantiate
 public class ClientImpl implements Client {
 	
-	int count;
+	AtomicInteger count = new AtomicInteger(0);
 
 	@Bind(aggregate=true, filter="(&(province=Noord-Holland)(municipality=Amsterdam))")
 	void addedSensor(Sensor sensor) {
-		if (count == 0) {
+		int prevCount = count.getAndIncrement();
+		if (prevCount == 0) {
 			Monitor.event("Added first sensor");
 		}
-		count ++;
 //		System.out.println("added " + sensor + " #" + count);
-		if (count == Constants.EXPECTED_SERVICE_COUNT) {
+		if (prevCount + 1 == Constants.EXPECTED_SERVICE_COUNT) {
 			System.out.println("Added all " + count + " sensors...");
 			Monitor.event("Added sensors");
 		}
