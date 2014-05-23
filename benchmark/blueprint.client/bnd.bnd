@@ -1,0 +1,5 @@
+-includeresource: OSGI-INF=OSGI-INF
+Private-Package: blueprint.client.impl
+Export-Package: blueprint.client
+-buildpath: monitor;version=latest,\
+	sensors.api;version=latest
