@@ -3,7 +3,6 @@ package ipojo.client.impl;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import ipojo.client.Client;
-import monitor.Constants;
 import monitor.Monitor;
 
 import org.apache.felix.ipojo.annotations.Bind;
@@ -16,6 +15,7 @@ import org.apache.felix.ipojo.annotations.Unbind;
 import org.apache.felix.ipojo.annotations.Validate;
 
 import sensors.api.Sensor;
+import sensors.base.PostalCodes;
 
 @Component
 @Provides
@@ -31,7 +31,7 @@ public class ClientImpl implements Client {
 			Monitor.event("Added first sensor");
 		}
 //		System.out.println("added " + sensor + " #" + count);
-		if (prevCount + 1 == Constants.EXPECTED_SERVICE_COUNT) {
+		if (prevCount + 1 == PostalCodes.getExpectedServiceCount()) {
 			System.out.println("Added all " + count + " sensors...");
 			Monitor.event("Added sensors");
 		}

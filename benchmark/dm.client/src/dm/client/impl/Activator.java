@@ -20,6 +20,8 @@ public class Activator extends DependencyActivatorBase {
 	public void init(BundleContext context, DependencyManager manager)
 			throws Exception {
 		
+		System.out.println("init...");
+		
 		manager.add(createComponent().setImplementation(ClientImpl.class).setInterface(Client.class.getName(), null)
 				.add(createServiceDependency()
 						.setService(Sensor.class, "(&(province=Noord-Holland)(municipality=Amsterdam))")

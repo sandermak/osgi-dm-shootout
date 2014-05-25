@@ -1,4 +1,11 @@
 Bundle-Version: 0.0.0.${tstamp}
 Export-Package:  \
 	sensors.api,\
-	sensors.api.model
+	sensors.api.model,\
+	sensors.base
+-buildpath:  \
+	jackson-core-asl,\
+	jackson-mapper-asl,\
+	monitor;version=latest,\
+	osgi.core
+Bundle-Activator: sensors.base.Activator

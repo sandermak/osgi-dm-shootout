@@ -1,0 +1,15 @@
+-plugin: org.apache.felix.ipojo.bnd.PojoizationPlugin;path:='../build/lib/org.apache.felix.ipojo-1.11.2.jar,../build/lib//bnd-ipojo-plugin-1.11.2.jar,../build/lib/org.apache.felix.ipojo.manipulator-1.11.2.jar'
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	sensors.api;version=latest,\
+	monitor;version=latest,\
+	osgi.core,\
+	org.apache.felix.ipojo.api,\
+	org.apache.felix.ipojo,\
+	org.apache.felix.framework,\
+	jackson-core-asl,\
+	jackson-mapper-asl,\
+	org.apache.commons.lang3
+Private-Package:  \
+	sensors.ipojo.impl
+Bundle-Activator: sensors.ipojo.impl.Activator

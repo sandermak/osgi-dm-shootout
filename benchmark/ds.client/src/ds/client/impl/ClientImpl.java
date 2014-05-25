@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import monitor.Constants;
 import monitor.Monitor;
 import sensors.api.Sensor;
+import sensors.base.PostalCodes;
 import ds.client.Client;
 
 public class ClientImpl implements Client {
@@ -17,7 +18,7 @@ public class ClientImpl implements Client {
 			Monitor.event("Added first sensor");
 		}
 //		System.out.println("added " + sensor + " #" + count);
-		if (prevCount + 1 == Constants.EXPECTED_SERVICE_COUNT) {
+		if (prevCount + 1 == PostalCodes.getExpectedServiceCount()) {
 			System.out.println("Added all " + count + " sensors...");
 			Monitor.event("Added sensors");
 		}
