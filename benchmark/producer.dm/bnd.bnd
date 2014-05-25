@@ -1,0 +1,13 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	jackson-core-asl,\
+	jackson-mapper-asl,\
+	osgi.core,\
+	osgi.cmpn,\
+	sensors.api;version=latest,\
+	org.apache.felix.dependencymanager,\
+	monitor;version=latest,\
+	org.apache.commons.lang3
+Private-Package:  \
+	producer.dm.impl
+Bundle-Activator: producer.dm.impl.Activator

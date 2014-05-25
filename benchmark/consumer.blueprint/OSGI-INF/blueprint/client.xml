@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	  http://www.springframework.org/schema/beans 
+	  http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	  http://www.osgi.org/xmlns/blueprint/v1.0.0
+      http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+	<service id="clientService" interface="consumer.blueprint.Client"
+		ref="client" />
+	<bean id="client" init-method="start" destroy-method="deactivate"
+		class="consumer.blueprint.impl.ClientImpl">
+		<property name="sensors">
+			<reference-list interface="sensors.api.Sensor" filter="(&amp;(province=Noord-Holland)(municipality=Amsterdam))">
+				<reference-listener ref="client" bind-method="addedSensor" unbind-method="removedSensor" />
+			</reference-list>
+		</property> 
+	</bean>
+	
+</blueprint>

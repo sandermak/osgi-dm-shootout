@@ -1,0 +1,16 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	jackson-core-asl,\
+	jackson-mapper-asl,\
+	org.apache.felix.dependencymanager,\
+	osgi.core,\
+	osgi.cmpn,\
+	org.apache.commons.lang3,\
+	monitor;version=latest,\
+	sensors.api;version=latest
+Private-Package:  \
+	producer.osgi.impl
+Export-Package:  \
+	sensors.model,\
+	sensors
+Bundle-Activator: producer.osgi.impl.Activator

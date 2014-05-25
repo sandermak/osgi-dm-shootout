@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="start" enabled="true" immediate="true" name="ds.client" xmlns="http://www.osgi.org/xmlns/scr/v1.1.0">
-	<implementation class="ds.client.impl.ClientImpl" />
-	<property name="service.description" value="DS Sensors client" />
-	<service>
-		<provide interface="ds.client.Client" />
-	</service>
-	<reference bind="addedSensor" cardinality="1..n" interface="sensors.api.Sensor" name="sensor" policy="dynamic" target="(&amp;(province=Noord-Holland)(municipality=Amsterdam))" unbind="removedSensor"/>
-</scr:component>

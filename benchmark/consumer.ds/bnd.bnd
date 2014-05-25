@@ -1,0 +1,14 @@
+-buildpath:  \
+	osgi.core,\
+	osgi.cmpn,\
+	biz.aQute.bndlib,\
+	monitor;version=latest,\
+	sensors.api;version=latest
+Bundle-Version: 0.0.0.${tstamp}
+Private-Package:  \
+	consumer.ds.impl
+Include-Resource: OSGI-INF=OSGI-INF
+Service-Component: OSGI-INF/client.xml,\
+	*
+Export-Package:  \
+	consumer.ds
