@@ -1,0 +1,12 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	monitor;version=latest,\
+	osgi.cmpn,\
+	osgi.core,\
+	sensors.api;version=latest,\
+	org.apache.felix.dependencymanager;version=latest
+Private-Package:  \
+	consumer.dm.multi.impl
+Bundle-Activator: consumer.dm.multi.impl.Activator
+Export-Package:  \
+	consumer.dm.multi
