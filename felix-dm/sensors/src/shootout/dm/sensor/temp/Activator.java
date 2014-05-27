@@ -18,7 +18,7 @@ public class Activator extends DependencyActivatorBase {
 		props.put("sensor.type", "temperature");
 		
 		manager.add(createComponent()
-				.setInterface(Sensor.class.getName(), null)
+				.setInterface(Sensor.class.getName(), props)
 				.setImplementation(TemperatureSensor.class)
 		);
 		
@@ -27,7 +27,7 @@ public class Activator extends DependencyActivatorBase {
 	@Override
 	public void destroy(BundleContext context, DependencyManager manager)
 			throws Exception {
-		
+		// Nothing to do
 	}
 
 

@@ -18,7 +18,7 @@ public class Activator extends DependencyActivatorBase {
 		props.put("sensor.type", "humidity");
 		
 		manager.add(createComponent()
-				.setInterface(Sensor.class.getName(), props )
+				.setInterface(Sensor.class.getName(), props)
 				.setImplementation(HumiditySensor.class)
 		);
 		

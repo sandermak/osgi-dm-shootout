@@ -1,8 +1,7 @@
 package shootout.ds.sensor.temp;
 
+import java.util.Map;
 import java.util.Random;
-
-import org.osgi.service.component.ComponentContext;
 
 import shootout.ds.sensor.api.Sensor;
 
@@ -12,7 +11,7 @@ public class TemperatureSensor implements Sensor {
 		System.out.println("TemperatureSensor instantiated");
 	}
 
-	protected void activate(ComponentContext context) {
+	protected void activate(Map<String, Object> properties) {
 		System.out.println("TemperatureSensor activated");
 	}
 

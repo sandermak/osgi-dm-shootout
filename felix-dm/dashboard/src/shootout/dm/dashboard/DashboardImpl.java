@@ -8,7 +8,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.cm.ManagedService;
 
@@ -68,16 +67,14 @@ public class DashboardImpl implements Dashboard, ManagedService {
 		timer = null;
 	}
 
-	public void sensorAdded(@SuppressWarnings("rawtypes") ServiceReference ref,
-			Object obj) {
-		System.out.println("Sensor added " + obj.toString());
-		sensors.add((Sensor) obj);
+	public void sensorAdded(Sensor sensor) {
+		System.out.println("Sensor added " + sensor.toString());
+		sensors.add(sensor);
 	}
 
-	public void sensorRemoved(
-			@SuppressWarnings("rawtypes") ServiceReference ref, Object obj) {
-		System.out.println("Sensor removed " + obj.toString());
-		sensors.remove((Sensor) obj);
+	public void sensorRemoved(Sensor sensor) {
+		System.out.println("Sensor removed " + sensor.toString());
+		sensors.remove(sensor);
 	}
 
 	@Override
