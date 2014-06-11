@@ -1,0 +1,3 @@
+<ipojo>
+	<instance component="shootout.ipojo.dashboard.DashboardImpl"/>
+</ipojo>

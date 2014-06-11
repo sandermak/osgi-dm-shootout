@@ -12,6 +12,7 @@ import org.apache.felix.ipojo.annotations.Bind;
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Instantiate;
 import org.apache.felix.ipojo.annotations.Invalidate;
+import org.apache.felix.ipojo.annotations.Provides;
 import org.apache.felix.ipojo.annotations.Requires;
 import org.apache.felix.ipojo.annotations.Unbind;
 import org.apache.felix.ipojo.annotations.Updated;
@@ -26,7 +27,7 @@ import shootout.ipojo.dashboard.api.Dashboard;
 import shootout.ipojo.sensor.api.Sensor;
 
 @Component(managedservice="ipojo.dashboard")
-@Instantiate
+@Provides
 public class DashboardImpl implements Dashboard, ManagedService {
 	private static final Integer DEFAULT_REFRESH_INTERVAL = 10000;
 
@@ -81,7 +82,7 @@ public class DashboardImpl implements Dashboard, ManagedService {
 	}
 
 	
-	@Bind(aggregate=true)
+	@Bind(aggregate=true, optional=false)
 	public void sensorAdded(Sensor sensor) {
 		System.out.println("Sensor added " + sensor.toString());
 		sensors.add(sensor);
