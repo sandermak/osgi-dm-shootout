@@ -2,10 +2,9 @@ package consumer.dm.multi.impl;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import consumer.dm.multi.Client;
 import monitor.Monitor;
 import sensors.api.Sensor;
-import sensors.base.PostalCodes;
+import consumer.dm.multi.Client;
 
 public class ClientImpl implements Client {
 	
@@ -15,12 +14,6 @@ public class ClientImpl implements Client {
 		int prevCount = count.getAndIncrement();
 		if (prevCount == 0) {
 			Monitor.event("Added first sensor");
-		}
-
-//		System.out.println("added " + sensor + " #" + count);
-		if (prevCount + 1 == PostalCodes.getExpectedServiceCount()) {
-			System.out.println("Added all " + count + " sensors...");
-			Monitor.event("Added sensors");
 		}
 	}
 	

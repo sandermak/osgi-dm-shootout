@@ -13,9 +13,9 @@ import org.apache.felix.ipojo.annotations.Provides;
 import org.apache.felix.ipojo.annotations.Unbind;
 import org.apache.felix.ipojo.annotations.Validate;
 
-import consumer.ipojo.Client;
 import sensors.api.Sensor;
 import sensors.base.PostalCodes;
+import consumer.ipojo.Client;
 
 @Component
 @Provides
@@ -24,17 +24,18 @@ public class ClientImpl implements Client {
 	
 	AtomicInteger count = new AtomicInteger(0);
 
-	@Bind(aggregate=true, filter="(&(province=Noord-Holland)(municipality=Amsterdam))")
+	// (&(province=Noord-Holland)(municipality=Amsterdam)(city=Amsterdam Zuidoost)) : 1670
+	// (&(province=Noord-Holland)(municipality=Amsterdam)(city=Amsterdam Zuidoost)(postalcode=1101AM)) : 1
+	// (&(province=Noord-Holland)(municipality=Amsterdam)) : 19021
+	@Bind(aggregate=true, filter="(&(province=Noord-Holland)(municipality=Amsterdam)(city=Amsterdam Zuidoost)(postalcode=1101AM))")
 	void addedSensor(Sensor sensor) {
+		// invoke the service's method
+		sensor.getValues();
 		int prevCount = count.getAndIncrement();
 		if (prevCount == 0) {
-			Monitor.event("Added first sensor");
+			Monitor.event("Added first sensor", PostalCodes.getMaxSvcCount());
 		}
-//		System.out.println("added " + sensor + " #" + count);
-		if (prevCount + 1 == PostalCodes.getExpectedServiceCount()) {
-			System.out.println("Added all " + count + " sensors...");
-			Monitor.event("Added sensors");
-		}
+		Monitor.event("ipojo.added", new Object[] { count.get() });
 	}
 	
 	@Unbind

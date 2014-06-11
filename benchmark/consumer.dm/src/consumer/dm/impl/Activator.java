@@ -22,9 +22,11 @@ public class Activator extends DependencyActivatorBase {
 		
 		System.out.println("init...");
 		
+		String filter = "(&(province=Noord-Holland)(municipality=Amsterdam))";
+//		String filter = "(&(province=Noord-Holland)(municipality=Amsterdam)(city=Amsterdam Zuidoost)(postalcode=1101AM))";
 		manager.add(createComponent().setImplementation(ClientImpl.class).setInterface(Client.class.getName(), null)
 				.add(createServiceDependency()
-						.setService(Sensor.class, "(&(province=Noord-Holland)(municipality=Amsterdam))")
+						.setService(Sensor.class, filter)
 						.setCallbacks("addedSensor", "removedSensor")));
 
 	}

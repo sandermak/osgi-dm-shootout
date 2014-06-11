@@ -1,0 +1,9 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	osgi.cmpn,\
+	osgi.core,\
+	monitor;version=latest,\
+	sensors.api;version=latest
+Private-Package:  \
+	consumer.dm.restarter
+Bundle-Activator: consumer.dm.restarter.Activator

@@ -12,6 +12,8 @@ public class ClientImpl implements Client {
 	AtomicInteger count = new AtomicInteger(0);
 
 	void addedSensor(Sensor sensor) {
+		// invoke sensor method
+		sensor.getValues();
 		int prevCount = count.getAndIncrement();
 		if (prevCount == 0) {
 			Monitor.event("Added first sensor");

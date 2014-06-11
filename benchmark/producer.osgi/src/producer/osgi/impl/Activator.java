@@ -18,6 +18,7 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void start(final BundleContext context) throws Exception {
+		System.out.println("Starting sensors bundle.");
 		PostalCodes.forEach(new PostalCodes.PostalCodeHandler() {
 			@Override
 			public void doWithPostalCode(Dictionary<String, String> properties) {

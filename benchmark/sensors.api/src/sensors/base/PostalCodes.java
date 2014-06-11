@@ -17,11 +17,14 @@ import sensors.api.model.Province;
 
 public class PostalCodes {
 	
+	private static boolean LIMIT = false;
+	private static int max_svc_count = 100;
 	private static List<Dictionary<String, String>> postalCodes = new ArrayList<>();
 	private static BundleContext context;
 
 	static {
 		// read postalcodes into Properties objects
+		postalCodes.clear();
 		ObjectMapper mapper = new ObjectMapper();
 		Province[] provinces;
 		try {
@@ -44,7 +47,7 @@ public class PostalCodes {
 				}
 			}
 		}
-		System.out.println("Read " + provinces.length + " provinces.");
+		System.out.println("Read " + provinces.length + " provinces with " + postalCodes.size() + " postal codes.");
 		
 	}
 	
@@ -56,13 +59,20 @@ public class PostalCodes {
 		Monitor.event("Start registering Sensor services");
 		int count = 0;
 		for (Dictionary<String, String> properties : get()) {
-			handler.doWithPostalCode(properties);
-			count ++;
-			if (count % 10000 == 0) {
-				Monitor.event("Registered services.", count);
+			
+			if (!LIMIT || (properties.get("province").equals("Noord-Holland") 
+					&& properties.get("municipality").equals("Amsterdam")
+					&& properties.get("city").equals("Amsterdam Zuidoost")
+					&& count < max_svc_count)) {
+
+				handler.doWithPostalCode(properties);
+				count ++;
+				if (count % 10000 == 0) {
+					Monitor.event("Registered services.", count);
+				}
 			}
 		}
-		Monitor.event("Finished registering Sensor services");
+		Monitor.event("Finished registering " +count + " Sensor services");
 	}
 	
 	public interface PostalCodeHandler {
@@ -78,6 +88,14 @@ public class PostalCodes {
 	}
 	
 	public static int getExpectedServiceCount() {
-		return 19021;
+		return LIMIT ? Math.min(max_svc_count, 19021) : 19021;
+	}
+	
+	public static void setMaxSvcCount(int count) {
+		max_svc_count = count;
+	}
+
+	public static int getMaxSvcCount() {
+		return max_svc_count;
 	}
 }
