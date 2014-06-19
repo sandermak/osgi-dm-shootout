@@ -20,4 +20,4 @@
 	monitor;version=latest,\
 	consumer.dm.multi;version=latest
 
--runvm: -Xmx2024M -Dosgi.console -Dorg.apache.felix.dependencymanager.filterindexx="objectClass,postalcode,city"
+-runvm: -Xmx2024M -Dosgi.console -Dorg.apache.felix.dependencymanager.filterindex="objectClass,postalcode,city"

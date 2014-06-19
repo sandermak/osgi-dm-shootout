@@ -1,0 +1,4 @@
+-plugin: org.apache.felix.ipojo.bnd.PojoizationPlugin;path:='../build/lib/org.apache.felix.ipojo-1.11.2.jar,../build/lib/bnd-ipojo-plugin-1.11.2.jar,../build/lib/org.apache.felix.ipojo.manipulator-1.11.2.jar'
+Bundle-Version: 0.0.0.${tstamp}
+Private-Package:  \
+	shootout.ipojo.sensor.temp

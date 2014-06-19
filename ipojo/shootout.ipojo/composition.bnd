@@ -1,0 +1,5 @@
+-plugin: org.apache.felix.ipojo.bnd.PojoizationPlugin;path:='../build/lib/org.apache.felix.ipojo-1.11.2.jar,../build/lib/bnd-ipojo-plugin-1.11.2.jar,../build/lib/org.apache.felix.ipojo.manipulator-1.11.2.jar';metadata=${basedir}/metadata.xml;use-local-schemas=true
+Private-Package:  \
+	shootout.ipojo.composition
+Export-Package:  \
+	shootout.ipojo.composition.api

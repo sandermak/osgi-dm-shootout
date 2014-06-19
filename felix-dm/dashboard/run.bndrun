@@ -1,14 +1,17 @@
--runbundles: org.apache.felix.gogo.runtime,\
+-runbundles:  \
+	org.apache.felix.gogo.runtime,\
 	org.apache.felix.gogo.shell,\
 	osgi.cmpn,\
 	osgi.core,\
 	org.apache.felix.gogo.command,\
-    org.apache.felix.dependencymanager;version=3.1.0,\
-    org.apache.felix.dependencymanager.shell;version=3.0.1,\
-    org.apache.felix.configadmin,\
+	org.apache.felix.dependencymanager;version=3.1.0,\
+	org.apache.felix.dependencymanager.shell;version=3.0.1,\
+	org.apache.felix.configadmin,\
 	dashboard;version=latest,\
 	alerter;version=latest,\
 	sensors.dm.api;version=latest,\
 	sensors.dm.temp;version=latest,\
-	sensors.dm.humid;version=latest
+	sensors.dm.humid;version=latest,\
+	org.scala-lang.scala-library,\
+	org.servicedev.ravioli
 -runfw: org.apache.felix.framework;version='[4.2.1,4.2.1]'

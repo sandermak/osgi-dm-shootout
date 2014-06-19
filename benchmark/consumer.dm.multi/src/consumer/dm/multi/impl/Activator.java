@@ -29,7 +29,7 @@ public class Activator extends DependencyActivatorBase {
 		
 		int count = 0;
 		for (Dictionary<String, String> properties : PostalCodes.get()) {
-			if (properties.get("municipality").equals("Ouderkerk")) {
+			if (properties.get("municipality").equals("Ouderkerk")) { // Deventer
 				String city = properties.get("city");
 				String postalCode = properties.get("postalcode");
 				manager.add(createComponent().setImplementation(ClientImpl.class).setInterface(Client.class.getName(), null)

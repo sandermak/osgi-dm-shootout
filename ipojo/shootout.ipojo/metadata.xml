@@ -1,0 +1,24 @@
+<ipojo>
+
+	<composite name="mycomposite">
+		<instance component="shootout.ipojo.composition.PartA"/>
+		<instance component="shootout.ipojo.composition.PartB"/>
+		
+		<subservice action="import" 
+             specification="org.osgi.service.log.LogService"/>
+		
+		<provides action="export" 
+             specification="shootout.ipojo.composition.api.Provider"/>
+	</composite>
+	
+	<!--
+	<composite name="outercomposite">
+		<instance component="mycomposite"/>
+	</composite>
+	
+	<instance component="outercomposite"/>
+	-->
+
+	<instance component="mycomposite"/>
+	
+</ipojo>
