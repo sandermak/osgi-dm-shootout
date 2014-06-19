@@ -21,7 +21,7 @@ public class Activator implements BundleActivator {
 		System.out.println("Starting sensors bundle.");
 		PostalCodes.forEach(new PostalCodes.PostalCodeHandler() {
 			@Override
-			public void doWithPostalCode(Dictionary<String, String> properties) {
+			public void doWithPostalCode(Dictionary<String, Object> properties) {
 				SensorImpl sensor = new SensorImpl();
 				ServiceRegistration registration = context.registerService(Sensor.class.getName(), sensor, properties);
 				registrations.add(registration);

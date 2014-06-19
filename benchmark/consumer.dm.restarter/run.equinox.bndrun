@@ -17,7 +17,7 @@
 	osgi.cmpn,\
 	monitor;version=latest,\
 	org.apache.felix.dependencymanager,\
-	consumer.dm;version=latest,\
+	consumer.dm.restarter.client;version=latest,\
 	sensors.api;version=latest,\
 	org.apache.felix.ipojo,\
 	org.apache.felix.ipojo.gogo

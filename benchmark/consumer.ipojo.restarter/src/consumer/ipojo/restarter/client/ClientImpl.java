@@ -1,4 +1,4 @@
-package consumer.ipojo.impl;
+package consumer.ipojo.restarter.client;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,7 +15,6 @@ import org.apache.felix.ipojo.annotations.Validate;
 
 import sensors.api.Sensor;
 import sensors.base.PostalCodes;
-import consumer.ipojo.Client;
 
 @Component
 @Provides
@@ -24,7 +23,7 @@ public class ClientImpl implements Client {
 	
 	AtomicInteger count = new AtomicInteger(0);
 
-	@Bind(aggregate=true, filter="(&(province=Noord-Holland)(municipality=Amsterdam))")
+	@Bind(aggregate=true, filter="(id=0)")
 	void addedSensor(Sensor sensor) {
 		// invoke the service's method
 		sensor.getValues();
@@ -32,6 +31,7 @@ public class ClientImpl implements Client {
 		if (prevCount == 0) {
 			Monitor.event("Added first sensor", PostalCodes.getMaxSvcCount());
 		}
+		Monitor.event("ipojo.added", new Object[] { count.get() });
 	}
 	
 	@Unbind

@@ -1,10 +1,11 @@
-package consumer.ds.impl;
+package consumer.dm.restarter.client;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import monitor.Constants;
 import monitor.Monitor;
 import sensors.api.Sensor;
-import consumer.ds.Client;
+import sensors.base.PostalCodes;
 
 public class ClientImpl implements Client {
 	
@@ -15,12 +16,14 @@ public class ClientImpl implements Client {
 		sensor.getValues();
 		int prevCount = count.getAndIncrement();
 		if (prevCount == 0) {
-			Monitor.event("Added first sensor");
+			Monitor.event("Added first sensor", PostalCodes.getMaxSvcCount());
 		}
-		if (prevCount + 1 == 19021) {
+
+		if (prevCount + 1 == Constants.EXPECTED_SERVICE_COUNT) {
 			System.out.println("Added all " + count + " sensors...");
-			Monitor.event("Added sensors");
+			Monitor.event("Added all sensors");
 		}
+		Monitor.event("dm.added", new Object[] { count.get() });
 	}
 	
 	void removedSensor(Sensor sensor) {

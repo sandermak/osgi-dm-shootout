@@ -28,10 +28,10 @@ public class Activator extends DependencyActivatorBase {
 		System.out.println("init...");
 		
 		int count = 0;
-		for (Dictionary<String, String> properties : PostalCodes.get()) {
+		for (Dictionary<String, Object> properties : PostalCodes.get()) {
 			if (properties.get("municipality").equals("Ouderkerk")) { // Deventer
-				String city = properties.get("city");
-				String postalCode = properties.get("postalcode");
+				String city = (String) properties.get("city");
+				String postalCode = (String) properties.get("postalcode");
 				manager.add(createComponent().setImplementation(ClientImpl.class).setInterface(Client.class.getName(), null)
 						.setCallbacks(null, null, null, null)
 						.add(createServiceDependency()

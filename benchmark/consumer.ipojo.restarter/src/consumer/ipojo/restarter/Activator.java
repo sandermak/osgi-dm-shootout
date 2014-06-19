@@ -21,7 +21,7 @@ public class Activator implements BundleActivator, Listener {
 		Monitor.addListener(this);
 		PostalCodes.setMaxSvcCount(max);
 		for (Bundle bundle : context.getBundles()) {
-			if (bundle.getSymbolicName().equals("consumer.ipojo")) {
+			if (bundle.getSymbolicName().equals("consumer.ipojo.restarter.client")) {
 				ipojoClientBundle = bundle;
 			}
 			if (bundle.getSymbolicName().equals("producer.osgi")) {

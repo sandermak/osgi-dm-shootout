@@ -1,10 +1,9 @@
-package consumer.dm.impl;
+package consumer.dm.restarter.client;
 
 import org.apache.felix.dm.DependencyActivatorBase;
 import org.apache.felix.dm.DependencyManager;
 import org.osgi.framework.BundleContext;
 
-import consumer.dm.Client;
 import sensors.api.Sensor;
 
 public class Activator extends DependencyActivatorBase {
@@ -20,9 +19,9 @@ public class Activator extends DependencyActivatorBase {
 	public void init(BundleContext context, DependencyManager manager)
 			throws Exception {
 		
-		System.out.println("init...");
+		System.out.println("init client...");
 		
-		String filter = "(&(province=Noord-Holland)(municipality=Amsterdam))";
+		String filter = "(id=0)";
 		manager.add(createComponent().setImplementation(ClientImpl.class).setInterface(Client.class.getName(), null)
 				.add(createServiceDependency()
 						.setService(Sensor.class, filter)
@@ -31,3 +30,4 @@ public class Activator extends DependencyActivatorBase {
 	}
 
 }
+

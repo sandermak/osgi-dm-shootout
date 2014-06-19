@@ -60,7 +60,7 @@ private BundleContext context;
 		
 		PostalCodes.forEach(new PostalCodes.PostalCodeHandler() {
 			@Override
-			public void doWithPostalCode(Dictionary<String, String> properties) {
+			public void doWithPostalCode(Dictionary<String, Object> properties) {
 				ComponentInstance instance;
 				try {
 					instance = factory.createComponentInstance(properties);

@@ -17,9 +17,8 @@ import sensors.api.model.Province;
 
 public class PostalCodes {
 	
-	private static boolean LIMIT = false;
-	private static int max_svc_count = 100;
-	private static List<Dictionary<String, String>> postalCodes = new ArrayList<>();
+	private static int max_svc_count = -1;
+	private static List<Dictionary<String, Object>> postalCodes = new ArrayList<>();
 	private static BundleContext context;
 
 	static {
@@ -33,16 +32,19 @@ public class PostalCodes {
 			throw new RuntimeException(e);
 		}
 
+		int count = 0;
 		for (Province province : provinces) {
 			for (Municipality municipality : province.getMunicipalities()) {
 				for (City city : municipality.getCities()) {
 					for (String postalCode : city.getPostalCodes()) {
-						Dictionary<String, String> properties = new Hashtable<>();
+						Dictionary<String, Object> properties = new Hashtable<>();
 						properties.put("province", province.getName());
 						properties.put("municipality", municipality.getName());
 						properties.put("city", city.getName());
 						properties.put("postalcode", postalCode);
+						properties.put("id", count);
 						postalCodes.add(properties);
+						count ++;
 					}
 				}
 			}
@@ -51,20 +53,16 @@ public class PostalCodes {
 		
 	}
 	
-	public static Iterable<Dictionary<String, String>> get() {
+	public static Iterable<Dictionary<String, Object>> get() {
 		return postalCodes;
 	}
 	
 	public static void forEach(PostalCodeHandler handler) {
 		Monitor.event("Start registering Sensor services");
 		int count = 0;
-		for (Dictionary<String, String> properties : get()) {
+		for (Dictionary<String, Object> properties : get()) {
 			
-			if (!LIMIT || (properties.get("province").equals("Noord-Holland") 
-					&& properties.get("municipality").equals("Amsterdam")
-					&& properties.get("city").equals("Amsterdam Zuidoost")
-					&& count < max_svc_count)) {
-
+			if (max_svc_count == -1 || count < max_svc_count) {
 				handler.doWithPostalCode(properties);
 				count ++;
 				if (count % 100000 == 0) {
@@ -76,7 +74,7 @@ public class PostalCodes {
 	}
 	
 	public interface PostalCodeHandler {
-		void doWithPostalCode(Dictionary<String, String> properties);
+		void doWithPostalCode(Dictionary<String, Object> properties);
 	}
 	
 	public static void setBundleContext(BundleContext context) {
@@ -85,10 +83,6 @@ public class PostalCodes {
 
 	public static BundleContext getBundleContext() {
 		return PostalCodes.context;
-	}
-	
-	public static int getExpectedServiceCount() {
-		return LIMIT ? Math.min(max_svc_count, 19021) : 19021;
 	}
 	
 	public static void setMaxSvcCount(int count) {

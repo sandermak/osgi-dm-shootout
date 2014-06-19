@@ -24,7 +24,7 @@ public class Activator extends DependencyActivatorBase {
 
 		PostalCodes.forEach(new PostalCodes.PostalCodeHandler() {
 			@Override
-			public void doWithPostalCode(Dictionary<String, String> properties) {
+			public void doWithPostalCode(Dictionary<String, Object> properties) {
 				SensorImpl sensor = new SensorImpl();
 				mgr.add(createComponent().setInterface(Sensor.class.getName(), properties)
 						.setImplementation(sensor));

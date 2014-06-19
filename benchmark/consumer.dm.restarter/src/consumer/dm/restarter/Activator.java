@@ -21,7 +21,7 @@ public class Activator implements BundleActivator, Listener {
 		Monitor.addListener(this);
 		PostalCodes.setMaxSvcCount(max);
 		for (Bundle bundle : context.getBundles()) {
-			if (bundle.getSymbolicName().equals("consumer.dm")) {
+			if (bundle.getSymbolicName().equals("consumer.dm.restarter.client")) {
 				clientBundle = bundle;
 			}
 			if (bundle.getSymbolicName().equals("producer.osgi")) {

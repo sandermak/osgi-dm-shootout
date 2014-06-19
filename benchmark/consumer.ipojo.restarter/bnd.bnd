@@ -1,9 +1,9 @@
-Bundle-Version: 0.0.0.${tstamp}
+-plugin: org.apache.felix.ipojo.bnd.PojoizationPlugin;path:='../build/lib/org.apache.felix.ipojo-1.11.2.jar,../build/lib//bnd-ipojo-plugin-1.11.2.jar,../build/lib/org.apache.felix.ipojo.manipulator-1.11.2.jar'
 -buildpath:  \
 	osgi.cmpn,\
 	osgi.core,\
 	monitor;version=latest,\
-	sensors.api;version=latest
-Private-Package:  \
-	consumer.ipojo.restarter
-Bundle-Activator: consumer.ipojo.restarter.Activator
+	sensors.api;version=latest,\
+	org.apache.felix.ipojo
+-sub:  \
+	*.bnd

@@ -5,6 +5,9 @@
 -resolve.effective: active
 
 -runbundles:  \
+	sensors.api;version=latest,\
+	consumer.ipojo.restarter;version=latest,\
+	consumer.ipojo.restarter.client;version=latest,\
 	producer.osgi;version=latest,\
 	jackson-core-asl;version='[1.9.8,1.9.9)',\
 	jackson-mapper-asl;version='[1.9.8,1.9.9)',\
@@ -17,8 +20,6 @@
 	monitor;version=latest,\
 	org.apache.felix.dependencymanager,\
 	consumer.ipojo;version=latest,\
-	sensors.api;version=latest,\
 	org.apache.felix.ipojo,\
-	org.apache.felix.ipojo.gogo,\
-	consumer.ipojo.restarter;version=latest
+	org.apache.felix.ipojo.gogo
 -runvm: -Xmx1024M -Dosgi.console -Dorg.apache.felix.dependencymanager.filterindexx="objectClass,municipality,city;municipality,city"
