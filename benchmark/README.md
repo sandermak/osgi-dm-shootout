@@ -13,7 +13,7 @@ The tested OSGi frameworks are:
 * Knoplerfish
 
 ## The case
-The case as well as the results are on the [Ultimate Dependency Manager Shootout](http://www.slideshare.net/mfrancis/the-ultimate-dependency-manager-shoot-out-x-uiterlinden-s-mak) slides on slideshare.
+The case as well as the results are on the [Ultimate Dependency Manager Shootout](http://www.slideshare.net/SanderMak/the-ultimate-dependency-manager-shootout-qcon-ny-2014) slides on slideshare.
 
 
 ## Getting started
